@@ -24,10 +24,7 @@ export default function App() {
     window.addEventListener("popstate", handlePopState);
 
     return () => {
-      window.removeEventListener(
-        "popstate",
-        handlePopState
-      );
+      window.removeEventListener("popstate", handlePopState);
     };
   }, []);
 
@@ -39,14 +36,13 @@ export default function App() {
       about: "/about",
     };
 
-    window.history.pushState(
-      {},
-      "",
-      paths[nextPage]
-    );
-
+    window.history.pushState({}, "", paths[nextPage]);
     setPage(nextPage);
     window.scrollTo(0, 0);
+  };
+
+  const handleGetStartedClick = () => {
+    navigate("plants");
   };
 
   if (page === "plants") {
@@ -62,19 +58,9 @@ export default function App() {
   }
 
   return (
-    <main className="landing-page">
-      <nav className="navbar landing-nav">
-        <a
-          href="/"
-          onClick={(event) => {
-            event.preventDefault();
-            navigate("home");
-          }}
-        >
-          Paradise Nursery
-        </a>
-
-        <div className="nav-links">
+    <div className="app-container">
+      <div className="background-image">
+        <nav className="navbar landing-nav">
           <a
             href="/"
             onClick={(event) => {
@@ -82,57 +68,72 @@ export default function App() {
               navigate("home");
             }}
           >
-            Home
+            Paradise Nursery
           </a>
 
-          <a
-            href="/plants"
-            onClick={(event) => {
-              event.preventDefault();
-              navigate("plants");
-            }}
+          <div className="nav-links">
+            <a
+              href="/"
+              onClick={(event) => {
+                event.preventDefault();
+                navigate("home");
+              }}
+            >
+              Home
+            </a>
+
+            <a
+              href="/plants"
+              onClick={(event) => {
+                event.preventDefault();
+                navigate("plants");
+              }}
+            >
+              Plants
+            </a>
+
+            <a
+              href="/about"
+              onClick={(event) => {
+                event.preventDefault();
+                navigate("about");
+              }}
+            >
+              About Us
+            </a>
+
+            <a
+              href="/cart"
+              onClick={(event) => {
+                event.preventDefault();
+                navigate("cart");
+              }}
+            >
+              Cart 🛒
+            </a>
+          </div>
+        </nav>
+
+        <section className="hero-content">
+          <p className="eyebrow">
+            BRING NATURE HOME
+          </p>
+
+          <h1>Welcome to Paradise Nursery</h1>
+
+          <p>
+            Discover beautiful houseplants and transform
+            your space into a peaceful green paradise.
+          </p>
+
+          <button
+            className="get-started-button"
+            onClick={handleGetStartedClick}
           >
-            Plants
-          </a>
-
-          <a
-            href="/about"
-            onClick={(event) => {
-              event.preventDefault();
-              navigate("about");
-            }}
-          >
-            About Us
-          </a>
-
-          <a
-            href="/cart"
-            onClick={(event) => {
-              event.preventDefault();
-              navigate("cart");
-            }}
-          >
-            Cart 🛒
-          </a>
-        </div>
-      </nav>
-
-      <section className="hero-content">
-        <p className="eyebrow">
-          BRING NATURE HOME
-        </p>
-
-        <h1>Welcome To Paradise Nursery</h1>
-
-        <p>
-          Discover beautiful houseplants and transform
-          your space into a peaceful green paradise.
-        </p>
-
-        <button onClick={() => navigate("plants")}>
-          Get Started
-        </button>
-      </section>
-    </main>
+            Get Started
+          </button>
+        </section>
+      </div>
+    </div>
   );
 }
