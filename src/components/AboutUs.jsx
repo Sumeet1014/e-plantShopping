@@ -1,36 +1,33 @@
-
 export default function AboutUs() {
   return (
-    <main className="about-page">
-      <nav className="navbar">
-        <a href="/">Paradise Nursery</a>
-        <div className="nav-links">
-          <a href="/">Home</a>
-          <a href="/plants">Plants</a>
-          <a href="/cart">Cart 🛒</a>
-        </div>
-      </nav>
-
-      <section className="about-content">
+    <section className="about-us">
+      <div className="about-container">
         <h1>About Paradise Nursery</h1>
+
         <p>
-          Paradise Nursery is dedicated to bringing the beauty
-          of nature into your home. We offer a carefully selected
-          collection of indoor plants for every space and lifestyle.
+          Paradise Nursery is an online plant shopping
+          application that provides a wide variety of
+          beautiful and healthy houseplants.
         </p>
-        <h2>Our Mission</h2>
+
         <p>
-          Our mission is to make indoor gardening enjoyable and
-          accessible by helping people discover plants that bring
-          freshness, comfort, and natural beauty to their homes.
+          Our goal is to make it easy for plant lovers
+          to discover, explore, and purchase plants for
+          their homes and workplaces.
         </p>
-        <h2>Why Choose Us?</h2>
+
         <p>
-          We focus on plant variety, clear product information,
-          and a simple shopping experience so you can find the
-          right green companion for your space.
+          We offer air-purifying plants, succulents,
+          tropical plants, and many other varieties at
+          affordable prices.
         </p>
-      </section>
-    </main>
+
+        <p>
+          Paradise Nursery believes that plants bring
+          freshness, beauty, and positivity into every
+          space.
+        </p>
+      </div>
+    </section>
   );
 }
