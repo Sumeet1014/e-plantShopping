@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import ProductList from "./components/ProductList";
 import CartItem from "./components/CartItem";
@@ -18,12 +17,17 @@ export default function App() {
   const [page, setPage] = useState(getPage);
 
   useEffect(() => {
-    const handlePopState = () => setPage(getPage());
+    const handlePopState = () => {
+      setPage(getPage());
+    };
 
     window.addEventListener("popstate", handlePopState);
 
     return () => {
-      window.removeEventListener("popstate", handlePopState);
+      window.removeEventListener(
+        "popstate",
+        handlePopState
+      );
     };
   }, []);
 
@@ -35,7 +39,12 @@ export default function App() {
       about: "/about",
     };
 
-    window.history.pushState({}, "", paths[nextPage]);
+    window.history.pushState(
+      {},
+      "",
+      paths[nextPage]
+    );
+
     setPage(nextPage);
     window.scrollTo(0, 0);
   };
@@ -57,8 +66,8 @@ export default function App() {
       <nav className="navbar landing-nav">
         <a
           href="/"
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={(event) => {
+            event.preventDefault();
             navigate("home");
           }}
         >
@@ -66,44 +75,58 @@ export default function App() {
         </a>
 
         <div className="nav-links">
-          <a href="/" onClick={(e) => {
-            e.preventDefault();
-            navigate("home");
-          }}>
+          <a
+            href="/"
+            onClick={(event) => {
+              event.preventDefault();
+              navigate("home");
+            }}
+          >
             Home
           </a>
 
-          <a href="/plants" onClick={(e) => {
-            e.preventDefault();
-            navigate("plants");
-          }}>
+          <a
+            href="/plants"
+            onClick={(event) => {
+              event.preventDefault();
+              navigate("plants");
+            }}
+          >
             Plants
           </a>
 
-          <a href="/about" onClick={(e) => {
-            e.preventDefault();
-            navigate("about");
-          }}>
+          <a
+            href="/about"
+            onClick={(event) => {
+              event.preventDefault();
+              navigate("about");
+            }}
+          >
             About Us
           </a>
 
-          <a href="/cart" onClick={(e) => {
-            e.preventDefault();
-            navigate("cart");
-          }}>
+          <a
+            href="/cart"
+            onClick={(event) => {
+              event.preventDefault();
+              navigate("cart");
+            }}
+          >
             Cart 🛒
           </a>
         </div>
       </nav>
 
       <section className="hero-content">
-        <p className="eyebrow">BRING NATURE HOME</p>
+        <p className="eyebrow">
+          BRING NATURE HOME
+        </p>
 
-        <h1>Paradise Nursery</h1>
+        <h1>Welcome To Paradise Nursery</h1>
 
         <p>
-          Discover beautiful houseplants and transform your
-          space into a peaceful green paradise.
+          Discover beautiful houseplants and transform
+          your space into a peaceful green paradise.
         </p>
 
         <button onClick={() => navigate("plants")}>
